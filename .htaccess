@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+
+  # public klasörü içindeyse dokunma (asset’leri ve public/index.php’yi doğrudan sun)
+  RewriteRule ^public/ - [L]
+
+  # Diğer tüm istekleri public/index.php’ye ilet, url parametresi kalsın
+  RewriteRule ^(.*)$ public/index.php?url=$1 [L,QSA]
+</IfModule>

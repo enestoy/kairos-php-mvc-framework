@@ -1,0 +1,17 @@
+
+
+body{
+    body {
+  margin: 0;               /* Tarayıcı varsayılan boşlukları kaldırır */
+  padding: 0;              /* Aynı şekilde padding sıfırlanır */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Okunabilir, modern font */
+  font-size: 16px;         /* Okunabilir temel yazı boyutu */
+  line-height: 1.5;        /* Satır yüksekliği, göz yorulmasın diye */
+  color: #222;             /* Kontrastı yüksek, ama göz yakmayan yazı rengi */
+  background-color: #fff;  /* Temiz, sade arka plan */
+  box-sizing: border-box;  /* Kutunun boyut hesaplamasında rahatlık */
+  -webkit-font-smoothing: antialiased; /* Yazıların keskin ve pürüzsüz görünmesi için */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+}
