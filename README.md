@@ -1,18 +1,22 @@
 # Kairos PHP MVC Framework
 
-Kairos is a modern and lightweight **PHP MVC framework**, focused on clean architecture, modularity, and security.  
+Kairos is a modern and lightweight **PHP MVC framework**, focused on clean architecture, modularity, and security.
 It is designed to enable rapid development, scalability for medium/large-scale applications, and easier maintainability.
+
+> **v2.0** — Redesigned UI with **Tailwind CSS**, navy theme, a data-driven admin dashboard, and public self-registration.
 
 ---
 
 ## ✨ Features
 
 - **MVC Architecture** (Controller, Model, View)
+- **Modern UI with Tailwind CSS** — navy theme, responsive admin panel & dashboard
+- **Authentication** — admin login + **public self-registration** (`/register`)
 - **Middleware Support**: Authorization (Auth), CSRF protection, Logging, Rate Limiting, Cache Control, Spider Trap
 - **Service Layer** (Mail Service with PHPMailer integration)
 - **Routing System**: Web & API routes
 - **Security Helpers**: Session management, CSRF, spider protection
-- **Ready-to-use Admin Panel** (admin login + dashboard)
+- **Environment based config** (`.env` driven app & database settings)
 - **Error Views** (404 & 500)
 - **Unit & Integration Test Support** (PHPUnit)
 
@@ -21,23 +25,33 @@ It is designed to enable rapid development, scalability for medium/large-scale a
 ## 📂 Project Structure
 
 ```text
-mvc-php/
-├── app/           # Application layer (Controllers, Models, Views, Middleware, Services, Routes, Helpers)
-├── core/          # Core framework components (App, Router, MVC base classes, Security tools)
-├── public/        # Public directory (index.php, assets, .htaccess)
-├── storage/       # Storage for cache / rate limit data
-├── tests/         # Unit and integration tests
-├── vendor/        # Composer dependencies
-├── logs/          # Log files
-├── .env           # Environment configuration
-└── index.php      # Entry point
+kairos-mvc/
+├── app/             # Application layer (Controllers, Models, Views, Middleware, Services, Routes, Helpers, Config)
+├── core/            # Core framework components (App, Router, MVC base classes, Security tools)
+├── public/          # Public directory (index.php, compiled assets, .htaccess)
+│   └── assets/css/  # tailwind.css (compiled output)
+├── resources/       # Front-end sources (resources/css/app.css — Tailwind input)
+├── storage/         # Runtime storage (rate limit data)
+├── tests/           # Unit and integration tests
+├── logs/            # Log files
+├── tailwind.config.js
+├── package.json     # Tailwind build scripts
+├── .env.example     # Environment template (copy to .env)
+└── index.php        # Entry point
 ```
 
 ---
 
-## 🚀 Installation
+## 🛠 Requirements
 
-Follow the steps below to run the project locally:
+- PHP >= 8.1
+- Composer
+- Node.js >= 18 & npm (for the Tailwind CSS build)
+- MySQL (or any PDO-compatible database)
+
+---
+
+## 🚀 Installation
 
 ### 1. Clone the repository
 
@@ -46,31 +60,41 @@ git clone https://github.com/enestoy/kairos-php-mvc-framework.git
 cd kairos-php-mvc-framework
 ```
 
-### 2. Install dependencies
+### 2. Install PHP dependencies
 
 ```bash
 composer install
 ```
 
-### 3. Database setup
+### 3. Build front-end assets (Tailwind CSS)
 
-- Create a database named `mvc-php` in MySQL.
-- Import the provided SQL file into this database.
+```bash
+npm install
+npm run build:css     # one-off build → public/assets/css/tailwind.css
+# npm run watch:css   # rebuild automatically while developing
+```
 
-### 4. Configure environment variables
+### 4. Environment configuration
 
-`.env` example:
+Copy the example file and adjust it for your setup:
+
+```bash
+cp .env.example .env
+```
+
+`.env` (defaults are for MAMP — MySQL on port **8889**, user/pass `root`/`root`):
 
 ```ini
+APP_NAME=Kairos
 APP_ENV=development
 APP_DEBUG=true
-APP_URL=http://localhost/kairos/mvc-v1
+APP_URL=http://localhost:8000
 
 DB_HOST=127.0.0.1
-DB_PORT=3306
+DB_PORT=8889
 DB_DATABASE=mvc-php
 DB_USERNAME=root
-DB_PASSWORD=secret
+DB_PASSWORD=root
 
 # Mail service
 MAIL_HOST=smtp.yourdomain.com
@@ -80,22 +104,34 @@ MAIL_PASSWORD=yourpassword
 MAIL_ENCRYPTION=tls
 ```
 
-🔑 **Default Admin Login**
+> `app/Config/app.php` and `app/Config/database.php` read these values automatically.
 
-- URL: `http://localhost/kairos/mvc-v1/admin/login`
-- Username: `admin`
-- Password: `123456`
+### 5. Database setup
 
-> Once installation is complete, log in and explore the admin panel.  
-> For security reasons, please change the default password immediately.
+- Create a database named `mvc-php` in MySQL.
+- Import the provided `mvc-php.sql` into it.
+
+### 6. Run
+
+Using PHP's built-in server (development):
+
+```bash
+php -S localhost:8000 server-router.php
+```
+
+Or serve the project through MAMP/Apache and set `APP_URL` accordingly.
 
 ---
 
-## 🛠 Requirements
+🔑 **Default Admin Login**
 
-- PHP >= 8.1
-- Composer
-- MySQL (or any PDO-compatible database)
+- URL: `http://localhost:8000/admin/login`
+- Username: `admin`
+- Password: `123456`
+
+New users can register themselves at `http://localhost:8000/register` (assigned the `viewer` role).
+
+> For security reasons, please change the default password after installation.
 
 ---
 
