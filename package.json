@@ -1,0 +1,13 @@
+{
+  "name": "kairos-mvc",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kairos PHP MVC - Tailwind CSS build",
+  "scripts": {
+    "build:css": "tailwindcss -i ./resources/css/app.css -o ./public/assets/css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./resources/css/app.css -o ./public/assets/css/tailwind.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

@@ -1,0 +1,111 @@
+mvc-php/
+├── tests/
+│   ├── Unit/
+│   │   ├── Core/
+│   │   ├── Middleware/
+│   │   ├── Controllers/
+│   │   └── Models/
+│   └── Integration/
+│       └── RoutesTest.php
+│
+├── core/
+│   ├── App.php
+│   ├── Router.php
+│   ├── Controller.php
+│   ├── Model.php
+│   ├── View.php
+│   ├── Session.php
+│   └── Security/
+│       └── SpiderTrap.php
+│
+├── app/
+│   ├── Config/
+│   │   ├── database.php
+│   │   └── app.php
+│   │
+│   ├── Controllers/
+│   │   ├── BaseController.php
+│   │   ├── AdminController.php
+│   │   ├── AdminControllers/
+│   │   │   ├── DashboardController.php
+│   │   │   ├── AuthController.php
+│   │   │   └── RegisterController.php
+│   │   ├── InterfaceControllers/
+│   │   │   └── HomeController.php
+│   │   └── ApiControllers/
+│   │       └── UserApiController.php      
+│   │
+│   ├── Models/
+│   │   ├── Model.php
+│   │   └── AdminModels/
+│   │       └── UserModel.php
+│   │
+│   ├── Views/
+│   │   ├── admin/
+│   │   │   ├── layouts/
+│   │   │   │   └── partials/
+│   │   │   │       ├── header.php
+│   │   │   │       ├── navbar.php
+│   │   │   │       ├── footer.php
+│   │   │   │       └── flash.php
+│   │   │   ├── auth/
+│   │   │   │   ├── login.php
+│   │   │   │   └── register.php
+│   │   │   └── dashboard/
+│   │   │       └── index.php
+│   │   ├── interface/
+│   │   │   ├── layouts/
+│   │   │   │   ├── home.php
+│   │   │   │   └── partials/
+│   │   │   │       ├── header.php
+│   │   │   │       ├── navbar.php
+│   │   │   │       ├── footer.php
+│   │   │   │       └── flash.php
+│   │   │   └── pages/
+│   │   │       └── contact.php
+│   │   └── errors/
+│   │       ├── 404.php
+│   │       └── 500.php
+│   │
+│   ├── Helpers/
+│   │   ├── DateHelper.php
+│   │   ├── DebugHelper.php
+│   │   ├── StringHelper.php
+│   │   ├── UrlHelper.php
+│   │   └── functions.php
+│   │
+│   ├── Middleware/
+│   │   ├── AuthMiddleware.php
+│   │   ├── CsrfMiddleware.php
+│   │   ├── LoggingMiddleware.php
+│   │   ├── SpiderTrapMiddleware.php
+│   │   ├── CacheControlMiddleware.php
+│   │   └── RateLimitMiddleware.php    
+│   │
+│   ├── Services/
+│   │   └── MailService.php
+│   │
+│   └── Routes/
+│       ├── web.php
+│       └── api.php
+│
+├── public/
+│   ├── assets/
+│   │   ├── css/
+│   │   ├── js/
+│   │   └── img/
+│   ├── index.php
+│   └── .htaccess
+│
+├── storage/
+│   └── ratelimit/                     
+│
+├── vendor/
+│
+├── logs/
+│   └── debug
+│
+├── .env
+├── .htaccess
+├── composer.json
+└── index.php

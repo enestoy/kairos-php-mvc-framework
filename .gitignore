@@ -1,0 +1,22 @@
+# Bağımlılıklar
+/vendor/
+/node_modules/
+
+# Ortam dosyası (gizli bilgiler!)
+.env
+
+# Loglar (çalışma anı)
+/logs/*
+!/logs/.gitkeep
+npm-debug.log*
+
+# Depolama / cache (çalışma anı verisi, IP kayıtları vb.)
+/storage/ratelimit/*
+!/storage/ratelimit/.gitkeep
+
+# İşletim sistemi / editör
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
